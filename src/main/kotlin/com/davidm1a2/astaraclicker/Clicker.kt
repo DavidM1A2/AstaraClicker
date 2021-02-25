@@ -2,7 +2,6 @@ package com.davidm1a2.astaraclicker
 
 import net.minecraft.client.Minecraft
 import net.minecraft.client.entity.player.ClientPlayerEntity
-import net.minecraft.util.Hand
 import net.minecraft.util.text.StringTextComponent
 import net.minecraftforge.api.distmarker.Dist
 import net.minecraftforge.api.distmarker.OnlyIn
@@ -51,6 +50,7 @@ class Clicker {
             while (isAutoClicking.get()) {
                 val mc = Minecraft.getInstance()
                 mc.execute {
+                    LEFT_CLICK_COUNTER.set(mc, 0)
                     CLICK_MOUSE.invoke(mc)
                 }
                 // Wait 1.5 to 2 seconds
@@ -62,5 +62,6 @@ class Clicker {
     companion object {
         private val LOG = LogFactory.getLog(Clicker::class.java)
         private val CLICK_MOUSE = ObfuscationReflectionHelper.findMethod(Minecraft::class.java, "func_147116_af")
+        private val LEFT_CLICK_COUNTER = ObfuscationReflectionHelper.findField(Minecraft::class.java, "field_71429_W")
     }
 }
