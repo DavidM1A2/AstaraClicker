@@ -53,7 +53,7 @@ class Clicker {
                     LEFT_CLICK_COUNTER.set(mc, 0)
                     CLICK_MOUSE.invoke(mc)
                 }
-                // Wait 1.5 to 2 seconds
+                // Wait 0.6 to 0.8 seconds
                 Thread.sleep(Random.nextLong(600, 800))
             }
         }
